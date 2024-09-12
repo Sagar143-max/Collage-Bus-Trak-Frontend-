@@ -1,33 +1,23 @@
-import { createSlice,nanoid } from "@reduxjs/toolkit";
+// src/Slices/countSlice.js
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState =  {
-   count:[{id:1,number:1}] 
-}
+const countSlice = createSlice({
+  name: 'count',
+  initialState: {
+    value: 0,
+  },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload;
+    },
+  },
+});
 
-export const countSlice = createSlice({
-    name: 'counts',
-    initialState,
-    reducers :{
-        SUMcount: (state,action)=>{
-            const newcount = {
-             id:nanoid(),
-             number:action.payload
-            }
-            state.count.push(newcount)
-        },
-        SUBcount:(state,action)=>{
-            const newcount = {
-                
-            }
-        },
-        MULcount:(state,action)=>{
-
-        },
-        DEVcount:(state,action)=>{
-
-        }
-
-    }
-})
-export const {SUMcount,SUBcount,MULcount,DEVcount} = countSlice.actions
-    
+export const { increment, decrement, incrementByAmount } = countSlice.actions;
+export default countSlice.reducer;

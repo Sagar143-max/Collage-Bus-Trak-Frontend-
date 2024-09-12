@@ -1,10 +1,12 @@
-import Homepage from './pages/Homepage'
-import './App.css'
+import { Outlet } from 'react-router-dom'
 
 function App() {
-
   return (
-    <Homepage/>
+    <div>
+      <h1>My App</h1>
+      
+      <Outlet />
+    </div>
   )
 }
 
